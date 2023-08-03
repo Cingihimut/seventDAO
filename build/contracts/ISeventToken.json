@@ -109,7 +109,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// contract/ISeventToken.sol\r\n//SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.19;\r\n\r\ninterface ISeventToken {\r\n    function transfer(address recipient, uint256 amount) external returns (bool);\r\n    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);\r\n    function balanceOf(address account) external view returns (uint256);\r\n    function mint(uint256 amount) external;\r\n    function burn(uint256 amount) external;\r\n}",
-  "sourcePath": "D:\\sevenDAO\\core\\contracts\\ISeventToken.sol",
+  "sourcePath": "D:\\sevenDAO\\MainContract\\contracts\\ISeventToken.sol",
   "ast": {
     "absolutePath": "project:/contracts/ISeventToken.sol",
     "exportedSymbols": {
@@ -606,7 +606,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.14",
-  "updatedAt": "2023-08-03T09:48:31.269Z",
+  "updatedAt": "2023-08-03T13:19:56.299Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -13,7 +13,7 @@ contract SeventToken is ERC20, Ownable, Pausable{
 
     using SafeMath for uint256;
     uint256 public constant INITIAL_SUPPLY = 400000000 * 10**18;
-    uint256 public MINT_AMOUNT = 100 * 10**18;
+    uint256 public immutable MINT_AMOUNT = 100 * 10**18;
 
     event TokenBurned(address indexed burner, uint256 amount);
     event TokenMinted(address indexed minter, uint256 amount);
@@ -31,7 +31,6 @@ contract SeventToken is ERC20, Ownable, Pausable{
 
     function transferFrom(address sender, address recipient, uint256 amount) public virtual whenNotPaused override returns (bool) {
         require(_msgSender() == sender || amount <= allowance (sender, _msgSender()), "ERC20: transfer amount exceeds allowance");
-        _transfer(sender, recipient, amount);
 
         if (_msgSender() != sender && allowance(sender, _msgSender()) != type(uint256).max) {
             _approve(sender, _msgSender(), allowance(sender, _msgSender())- amount);
