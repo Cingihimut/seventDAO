@@ -18,7 +18,7 @@ contract SeventFinance is ERC20, Ownable, Pausable{
     event TokenBurned(address indexed burner, uint256 amount);
     event TokenMinted(address indexed minter, uint256 amount);
 
-    constructor() ERC20("SeventToken", "Svt") {
+    constructor() ERC20("SeventFinance", "Svt") {
         _mint(msg.sender, INITIAL_SUPPLY);
     }
 
