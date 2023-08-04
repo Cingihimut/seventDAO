@@ -12,13 +12,16 @@ pragma solidity ^0.8.19;
 contract SeventFinance is ERC20, Ownable, Pausable{
 
     using SafeMath for uint256;
-    uint256 public constant INITIAL_SUPPLY = 400000000 * 10**18;
+    uint256 public constant INITIAL_SUPPLY = 200000000 * 10**18;
     uint256 public immutable MINT_AMOUNT = 100 * 10**18;
+
+    address public constant BURN_ADDRESS = 0x000000000000000000000000000000000000dEaD;
+    uint256 public constant MAX_SUPPLY = 450000000 * 10**18; 
 
     event TokenBurned(address indexed burner, uint256 amount);
     event TokenMinted(address indexed minter, uint256 amount);
 
-    constructor() ERC20("SeventFinance", "Svt") {
+    constructor() ERC20("SeventFinance", "Sevent") {
         _mint(msg.sender, INITIAL_SUPPLY);
     }
 
@@ -48,4 +51,9 @@ contract SeventFinance is ERC20, Ownable, Pausable{
         emit TokenMinted(msg.sender, amount);
     }
 
+    function burnTokens(uint256 amount) public onlyOwner {
+        require(amount <= balanceOf(msg.sender), "insufficient balances");
+        _burn(msg.sender, amount);
+        emit TokenBurned(msg.sender, amount);
+    }
 }
