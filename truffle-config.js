@@ -44,6 +44,7 @@
 require('dotenv').config();
 const { MNEMONIC } = process.env;
 const { INFURA_API_KEY } = process.env;
+const { ETHERSCAN_API_KEY } = process.env;
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
@@ -74,7 +75,13 @@ module.exports = {
       provider: () => new HDWalletProvider(MNEMONIC, INFURA_API_KEY),
       network_id: "11155111",
       gas: 4465030 
-    }
+    },
+    Plugins: [
+      'truffle-plugin-verify'
+    ],
+    api_keys: {
+      etherscan: ETHERSCAN_API_KEY
+    },
     //
     // An additional network, but with some advanced options…
     // advanced: {
